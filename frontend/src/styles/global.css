@@ -35,3 +35,69 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .error-text { color: #b42318; }
 .status-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 10px; font-size: 12px; color: var(--muted); }
 .legend-item { background: #eef2f7; border-radius: 999px; padding: 2px 10px; }
+.legend-tip { background: transparent; padding-left: 4px; }
+.legend-active { background: #fef3c7; color: #92400e; font-weight: 600; }
+
+/* 管段状态徽标：待巡线最显眼，废弃段置灰 */
+.status-badge { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: 12px; white-space: nowrap; }
+.badge-patrol { background: #fef3c7; color: #92400e; font-weight: 600; }
+.badge-normal { background: #dcfce7; color: #166534; }
+.badge-dredge { background: #ffedd5; color: #9a3412; }
+.badge-abandoned { background: #e5e7eb; color: #6b7280; }
+.row-patrol { background: #fffbeb; }
+.row-patrol td { font-weight: 500; }
+.row-abandoned { color: #9ca3af; }
+.cell-linepos { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.success-text { color: #166534; }
+
+/* 登记/编辑弹窗 */
+.modal-mask { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45); display: flex; align-items: center; justify-content: center; z-index: 20; }
+.modal { background: #fff; border-radius: 10px; padding: 20px 22px; width: 560px; max-width: calc(100vw - 32px); max-height: 86vh; overflow: auto; }
+.modal-title { margin: 0 0 14px; font-size: 16px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+.form-item { margin-bottom: 10px; }
+.form-label span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.form-label input { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 13px; }
+.form-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px; }
+.form-message { margin: 6px 0; }
+.form-hint { margin: 10px 0 0; font-size: 12px; color: var(--muted); }
+
+/* 线序视图：一段段顺排，待巡线高亮，废弃段单列在分隔线后 */
+.line-chain { display: flex; flex-direction: column; gap: 6px; }
+.line-seg { display: grid; grid-template-columns: 72px 1fr auto auto; gap: 10px; align-items: center; border: 1px solid var(--border); border-left: 4px solid #cbd5e1; background: #fff; border-radius: 8px; padding: 10px 14px; text-decoration: none; color: inherit; font-size: 13px; }
+.line-seg:hover { border-color: var(--brand); }
+.seg-patrol { border-left-color: #d97706; background: #fffbeb; }
+.seg-abandoned { border-left-color: #9ca3af; background: #f9fafb; color: #9ca3af; }
+.line-seg-pos { font-variant-numeric: tabular-nums; color: var(--muted); }
+.seg-abandoned .line-seg-pos { color: #9ca3af; }
+.line-seg-wells { font-weight: 600; }
+.line-seg-meta { color: var(--muted); font-size: 12px; }
+.line-arrow { padding: 0 0 0 30px; color: var(--brand); font-weight: 700; line-height: 1; }
+.line-divider { display: flex; align-items: center; gap: 10px; margin: 8px 0 2px; color: var(--muted); font-size: 12px; }
+.line-divider::before, .line-divider::after { content: ''; flex: 1; border-top: 1px dashed var(--border); }
+.callout { border-radius: 8px; padding: 10px 14px; font-size: 13px; margin: 0 0 12px; }
+.callout-patrol { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
+.callout-ok { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+.patrol-chip { display: inline-block; margin: 0 6px; padding: 2px 10px; background: #fde68a; border-radius: 999px; color: #78350f; text-decoration: none; font-weight: 600; }
+.patrol-chip:hover { background: #fcd34d; }
+
+/* 详情页 */
+.detail-table { max-width: 640px; }
+.detail-table th { width: 120px; background: #f8fafc; }
+.detail-position { display: flex; align-items: center; gap: 10px; font-size: 14px; margin: 0 0 12px; }
+.patrol-flag { background: #fde68a; color: #78350f; border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+.detail-actions { display: flex; gap: 8px; margin: 14px 0 6px; }
+.detail-hint { font-size: 12px; color: var(--muted); margin: 0 0 8px; }
+.detail-nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; }
+.detail-empty { background: #fff; border: 1px dashed var(--border); border-radius: 8px; padding: 32px; text-align: center; color: var(--muted); }
+.btn.disabled { pointer-events: none; opacity: 0.6; }
+a.btn { display: inline-block; text-decoration: none; line-height: 1.4; }
+
+/* 概览看板里的管网线序入口块 */
+.line-panel { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 14px; }
+.line-panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.line-panel-head h3 { margin: 0; font-size: 15px; }
+.line-panel-stats { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px; font-size: 12px; }
+.panel-line-item { display: grid; grid-template-columns: 64px 1fr 90px 84px; gap: 10px; align-items: center; border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; margin-bottom: 6px; font-size: 13px; text-decoration: none; color: inherit; }
+.panel-line-item:hover { border-color: var(--brand); }
+.panel-line-pos { color: var(--muted); font-variant-numeric: tabular-nums; }

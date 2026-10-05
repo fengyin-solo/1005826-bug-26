@@ -68,4 +68,10 @@ npm run build
 - 字段、状态、动作与流转目标集中在 `frontend/src/data/modules.ts`；示例数据在
   `frontend/src/data/seed.ts`。
 - 状态流转只允许在 `local-service.ts` 里改，页面组件不做业务判断。
+- 排水管网的线序是落库的唯一顺序，不是页面上的临时排序：管段按起点井号、终点井号、管径
+  （再以管段编号、id 收尾保证唯一）排列，已废弃段统一收在末尾；同一管段编号重复登记只保留
+  一条。归序规则在 `frontend/src/data/line-order.ts`，由 `local-store.ts` 在每次读取与写入时
+  统一执行并回写 `localStorage`，所以列表、线序视图（`/drainpipe/line-order`）、管段详情与
+  概览看板的段数和顺序一致，重新进入也不变；改了起点井号会重新归序。管段状态只能顺着
+  「待巡线 → 运行正常 → 待清淤」流转，不允许跳级，任一在用状态可报废为终态「已废弃」。
 - 想回到初始数据：清掉浏览器里 `drainage-pump:entries` 这一项，或调用 `resetModule(模块)`。

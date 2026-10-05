@@ -4,6 +4,7 @@ import Dashboard from '@/views/Dashboard.vue'
 const Pumpstation = () => import('@/views/pumpstation/index.vue')
 const Pumprun = () => import('@/views/pumprun/index.vue')
 const Drainpipe = () => import('@/views/drainpipe/index.vue')
+const DrainpipeSequence = () => import('@/views/drainpipe/sequence.vue')
 const Manhole = () => import('@/views/manhole/index.vue')
 const Dredge = () => import('@/views/dredge/index.vue')
 const Waterlevel = () => import('@/views/waterlevel/index.vue')
@@ -27,6 +28,7 @@ const router = createRouter({
     { path: '/pumpstation', name: 'pumpstation', component: Pumpstation },
     { path: '/pumprun', name: 'pumprun', component: Pumprun },
     { path: '/drainpipe', name: 'drainpipe', component: Drainpipe },
+    { path: '/drainpipe/sequence', name: 'drainpipe-sequence', component: DrainpipeSequence },
     { path: '/manhole', name: 'manhole', component: Manhole },
     { path: '/dredge', name: 'dredge', component: Dredge },
     { path: '/waterlevel', name: 'waterlevel', component: Waterlevel },

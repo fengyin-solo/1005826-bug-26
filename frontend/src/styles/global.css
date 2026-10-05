@@ -12,7 +12,7 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .app-title { font-size: 16px; margin: 0 0 16px; }
 .nav-list { display: flex; flex-direction: column; gap: 4px; }
 .nav-item { color: #cbd5e1; text-decoration: none; padding: 6px 8px; border-radius: 6px; font-size: 13px; }
-.nav-item.router-link-active { background: #1f6feb; color: #fff; }
+.nav-item.router-link-exact-active { background: #1f6feb; color: #fff; }
 .app-main { flex: 1; padding: 16px 20px; }
 .app-head { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; }
 .page-head { display: flex; justify-content: space-between; align-items: flex-start; margin: 12px 0; }
@@ -35,3 +35,70 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .error-text { color: #b42318; }
 .status-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 10px; font-size: 12px; color: var(--muted); }
 .legend-item { background: #eef2f7; border-radius: 999px; padding: 2px 10px; }
+
+/* 管段状态徽标 */
+.status-badge { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: 12px; white-space: nowrap; }
+.status-待巡线 { background: #fff4e5; color: #b54708; border: 1px solid #fdba74; }
+.status-运行正常 { background: #e7f6ec; color: #166534; border: 1px solid #86efac; }
+.status-待清淤 { background: #fef2f2; color: #b42318; border: 1px solid #fca5a5; }
+.status-已废弃 { background: #eef2f7; color: #64748b; border: 1px solid #cbd5e1; }
+
+.card-alert { border-color: #fdba74; background: #fffaf3; }
+.card-alert .stat-value { color: #b54708; }
+
+/* 列表行：待巡线一眼可辨，已废弃置灰收尾 */
+.pipe-row { cursor: pointer; }
+.pipe-table tr.row-patrol td { background: #fff7ed; }
+.pipe-table tr.row-discarded td { background: #f8fafc; color: #94a3b8; }
+.muted-text { color: var(--muted); }
+.patrol-flag { margin-left: 6px; background: #ea580c; color: #fff; border-radius: 4px; padding: 1px 6px; font-size: 11px; }
+
+/* 弹层 */
+.modal-mask { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45); display: flex; align-items: center; justify-content: center; z-index: 20; padding: 24px; }
+.modal-card { background: #fff; border-radius: 10px; width: min(720px, 100%); max-height: 90vh; overflow: auto; padding: 18px 20px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25); }
+.modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.modal-head h3 { margin: 0; font-size: 16px; }
+.modal-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 16px; }
+.foot-actions { display: flex; gap: 8px; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* 详情弹层 */
+.detail-order { display: flex; align-items: center; gap: 8px; font-size: 15px; margin: 0 0 14px; }
+.order-node { font-weight: 600; background: #eef4ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 2px 8px; }
+.order-arrow { color: var(--brand); font-weight: 700; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; margin: 0; }
+.detail-item { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--border); padding: 6px 0; font-size: 13px; }
+.detail-item dt { color: var(--muted); margin: 0; }
+.detail-item dd { margin: 0; text-align: right; }
+
+/* 登记表单 */
+.form-tip { font-size: 12px; color: var(--muted); margin: 0 0 12px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+.form-item span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.form-item em { color: #b42318; font-style: normal; margin-left: 2px; }
+.form-item input { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; }
+.form-error { color: #b42318; font-size: 12px; }
+
+/* 线序视图 */
+.sequence-list { list-style: none; margin: 0; padding: 0; }
+.sequence-card { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--border); border-left-width: 4px; border-radius: 8px; padding: 12px 16px; cursor: pointer; }
+.sequence-card.is-patrol { border-left-color: #ea580c; background: #fffaf3; }
+.sequence-card.is-dredge { border-left-color: #dc2626; }
+.sequence-card.is-discarded { border-left-color: #94a3b8; background: #f8fafc; color: #94a3b8; }
+.seq-no { font-size: 18px; font-weight: 700; color: var(--brand); min-width: 34px; }
+.is-discarded .seq-no { color: #94a3b8; }
+.seq-main { flex: 1; }
+.seq-line { margin: 0 0 4px; display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.seq-diameter { color: var(--muted); font-size: 12px; }
+.seq-meta { margin: 0; font-size: 12px; color: var(--muted); }
+.seq-side { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.sequence-link { text-align: center; color: #94a3b8; line-height: 1; margin: 2px 0; }
+.discarded-divider { text-align: center; font-size: 12px; color: #64748b; background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 6px; padding: 6px; margin-bottom: 4px; }
+.patrol-banner { background: #fff4e5; border: 1px solid #fdba74; color: #9a3412; border-radius: 8px; padding: 8px 14px; font-size: 13px; margin: 0 0 14px; }
+.patrol-banner.all-clear { background: #e7f6ec; border-color: #86efac; color: #166534; }
+.block-empty { padding: 24px; background: #fff; border-radius: 8px; }
+
+/* 概览里的线序看板 */
+.pipe-board { margin-top: 18px; }
+.board-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.board-head h3 { margin: 0; font-size: 15px; }

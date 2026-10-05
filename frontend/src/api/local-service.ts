@@ -1,3 +1,4 @@
+import { checkDrainpipeTransition, DRAINPIPE_KEY } from '@/data/drainpipe'
 import { MODULE_BY_KEY } from '@/data/modules'
 import { allRows, listRows, resetRows, saveRows } from '@/data/local-store'
 import type { ActionResult, EntryRow, ModuleMeta, OverviewResult, PageResult } from '@/data/types'
@@ -42,6 +43,13 @@ export function runAction(key: string, id: number, action: string): ActionResult
   const current = String(rows[index].status)
   if (current === target) {
     return { ok: false, message: `${meta.entity}已经是「${target}」，不用重复操作` }
+  }
+  if (key === DRAINPIPE_KEY) {
+    // 排水管网额外校验：状态只能从待巡线顺着走到待清淤，不允许跳级。
+    const blocked = checkDrainpipeTransition(action, current)
+    if (blocked) {
+      return { ok: false, message: blocked }
+    }
   }
   const lastStatus = meta.statuses[meta.statuses.length - 1]
   const updated: EntryRow = {
